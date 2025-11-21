@@ -135,8 +135,6 @@ php artisan serve
 
 🗂 Simple DB Diagram (Mermaid)
 
-ضعه كما هو في GitHub — سيظهر كـ ERD
-
 erDiagram
 
     USERS {
