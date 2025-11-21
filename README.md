@@ -132,3 +132,56 @@ php artisan serve
 * يمكن تطويره لاحقًا بإضافة: طرق دفع – كوبونات – شحن – Admin Panel كاملة.
 
 ---
+
+🗂 Simple DB Diagram (Mermaid)
+
+ضعه كما هو في GitHub — سيظهر كـ ERD
+
+erDiagram
+
+    USERS {
+        int id PK
+        string name
+        string email
+        string password
+    }
+
+    PRODUCTS {
+        int id PK
+        string name
+        decimal price
+        int stock
+    }
+
+    CARTS {
+        int id PK
+        int user_id FK
+        int product_id FK
+        int quantity
+    }
+
+    ORDERS {
+        int id PK
+        int user_id FK
+        string order_number
+        decimal total_amount
+        string address
+        string phone
+    }
+
+    ORDER_ITEMS {
+        int id PK
+        int order_id FK
+        int product_id FK
+        decimal price_at_order
+        int quantity
+        decimal subtotal
+    }
+
+    USERS ||--o{ CARTS : "has many"
+    USERS ||--o{ ORDERS : "has many"
+
+    PRODUCTS ||--o{ CARTS : "in cart"
+    PRODUCTS ||--o{ ORDER_ITEMS : "ordered"
+
+    ORDERS ||--o{ ORDER_ITEMS : "contains"
